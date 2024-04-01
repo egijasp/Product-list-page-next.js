@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/header/header";
 
-const poppins = Poppins({ weight: ["400", "700"], subsets: ["latin"] });
+const roboto = Roboto({ weight: ["400", "700"], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Product list App",
@@ -16,7 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={`container mx-auto px-7 lg:max-w-5xl ${roboto.className} `}>
+        <Header />
+        {children}
+        </body>
     </html>
   );
 }

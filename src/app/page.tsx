@@ -1,5 +1,6 @@
 import ProductList from "@/components/productlist/list";
 import getProducts from "../lib/actions/products";
+import Header from "@/components/header/header";
 
 export default async function Home({
   searchParams,
@@ -11,13 +12,9 @@ export default async function Home({
 }) {
   const query = searchParams?.query || "";
 
-  // const currentPage = Number(searchParams?.page) || 1;
-
   const filteredProducts = await getProducts(query);
 
   return (
-    <div className="container mx-auto p-4">
       <ProductList products={filteredProducts} />
-    </div>
   );
 }

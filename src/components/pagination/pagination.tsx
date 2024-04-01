@@ -34,7 +34,7 @@ const Pagination: FC<PaginationProps> = ({
         }}
       >
         {pages.map((page) => (
-          <Button key={page} page={page} onPaginate={() => onPaginate(page)} />
+          <Button activePage={currentPage}  key={page} page={page} onPaginate={() => onPaginate(page)} />
         ))}
       </div>
     </div>
