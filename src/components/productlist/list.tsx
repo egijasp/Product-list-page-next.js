@@ -24,13 +24,9 @@ const ProductList = ({ products }: ProductListProps) => {
     setCurrentPage(page);
   };
 
-
-  const lastIndexOfProducts = currentPage * productsPerPage;
-  const firstIndexOfProducts = lastIndexOfProducts - productsPerPage;
-  const currentProducts = products.slice(
-    firstIndexOfProducts,
-    lastIndexOfProducts,
-  );
+  const lastIndex = currentPage * productsPerPage;
+  const firstIndex = lastIndex - productsPerPage;
+  const currentProducts = products.slice(firstIndex, lastIndex);
 
   return (
     <div className="py-3">
@@ -42,7 +38,7 @@ const ProductList = ({ products }: ProductListProps) => {
           currentProducts?.map((product) => (
             <Link key={product.id} href={`/product/${product.id}`}>
               <div className="border rounded shadow grid  px-5 py-3 transition duration-700 ease-in-out  hover:scale-105 h-full space-y-2">
-              <ProductCard product={product} />
+                <ProductCard product={product} />
               </div>
             </Link>
           ))
