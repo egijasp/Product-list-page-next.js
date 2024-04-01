@@ -13,8 +13,9 @@ const Input: FC<InputProps> = ({ placeholder }) => {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const handleSearch = useDebouncedCallback((query: string) => {
+  const searchHandler = useDebouncedCallback((query: string) => {
     const params = new URLSearchParams(searchParams);
+    params.set("page", "1");
     if (query) {
       params.set("query", query);
     } else {
@@ -27,7 +28,7 @@ const Input: FC<InputProps> = ({ placeholder }) => {
     <>
       <input
         placeholder={placeholder}
-        onChange={(e) => handleSearch(e.target.value)}
+        onChange={(e) => searchHandler(e.target.value)}
         defaultValue={searchParams.get("query")?.toString()}
         type="search"
         className="border-2 rounded px-1.5 py-2 w-full sm:w-[50%] mb-6 text-sm"

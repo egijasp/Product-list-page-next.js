@@ -1,20 +1,20 @@
-import ProductList from "@/components/productlist/list";
 import getProducts from "../lib/actions/products";
-import Header from "@/components/header/header";
+import ProductsPage from "@/components/productsPage/productsPage";
+
+interface SearchParams {
+  query: string;
+  page: string;
+}
 
 export default async function Home({
   searchParams,
 }: {
-  searchParams?: {
-    query?: string;
-    page?: string;
-  };
+  searchParams: SearchParams;
 }) {
   const query = searchParams?.query || "";
+  const currentPage = Number(searchParams?.page) || 1;
 
   const filteredProducts = await getProducts(query);
 
-  return (
-      <ProductList products={filteredProducts} />
-  );
+  return <ProductsPage products={filteredProducts} currentPage={currentPage} />;
 }

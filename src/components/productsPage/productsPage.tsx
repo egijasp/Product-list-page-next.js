@@ -1,28 +1,17 @@
-"use client";
-
 import { Product } from "@/types/products";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import Input from "../input/input";
 import Pagination from "../pagination/pagination";
 import ProductCard from "../productCard/card";
+import { FC } from "react";
 
 interface ProductListProps {
   products: Product[];
-  currentPage?: number;
+  currentPage: number;
 }
 
-const ProductList = ({ products }: ProductListProps) => {
-  const [currentPage, setCurrentPage] = useState(1);
-
+const ProductsPage: FC<ProductListProps> = ({ products, currentPage }) => {
   const productsPerPage = 6;
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [products]);
-
-  const onPaginateHandler = (page: number) => {
-    setCurrentPage(page);
-  };
 
   const lastIndex = currentPage * productsPerPage;
   const firstIndex = lastIndex - productsPerPage;
@@ -31,27 +20,26 @@ const ProductList = ({ products }: ProductListProps) => {
   return (
     <div className="py-3">
       <Input placeholder="Search products..." />
-      <div className="grid content-start sm:grid-cols-2 md:grid-cols-3 gap-6 py-2 min-h-[300px]">
-        {currentProducts.length < 1 ? (
-          <div>Nothing found</div>
-        ) : (
-          currentProducts?.map((product) => (
+      {currentProducts.length < 1 ? (
+        <div className="text-center py-16 text-3xl">Nothing found</div>
+      ) : (
+        <div className="grid content-start sm:grid-cols-2 md:grid-cols-3 gap-6 py-2 min-h-[300px]">
+          {currentProducts?.map((product) => (
             <Link key={product.id} href={`/product/${product.id}`}>
-              <div className="border rounded shadow grid  px-5 py-3 transition duration-700 ease-in-out  hover:scale-105 h-full space-y-2">
+              <div className="border rounded shadow hover:shadow-lg grid px-5 py-3 transition duration-700 ease-in-out hover:scale-105 h-full">
                 <ProductCard product={product} />
               </div>
             </Link>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
       <Pagination
         productsAmount={products.length}
         productsPerPage={productsPerPage}
-        onPaginate={onPaginateHandler}
         currentPage={currentPage}
       />
     </div>
   );
 };
 
-export default ProductList;
+export default ProductsPage;
