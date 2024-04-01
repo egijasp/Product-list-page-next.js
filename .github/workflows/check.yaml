@@ -1,0 +1,16 @@
+name: Check
+on: push
+jobs:
+  Check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
