@@ -17,10 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`container mx-auto px-7 lg:max-w-5xl ${roboto.className} `}>
+      <body
+        className={`container mx-auto px-7 lg:max-w-4xl ${roboto.className} `}
+      >
         <Header />
         {children}
-        </body>
+      </body>
     </html>
   );
 }

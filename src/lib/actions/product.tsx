@@ -1,13 +1,10 @@
-import { Data, Product } from "@/types/products";
-import { mockData } from "../mockData/mockData";
+import { Product } from "@/types/products";
 
 export default async function getProduct(
   id: number,
 ): Promise<Product | undefined> {
-  // const res = await fetch(
-  //   "https://run.mocky.io/v3/b54fe93f-f5a1-426b-a76c-e43d246901fd",
-  // );
+  const res = await fetch("https://fakestoreapi.com/products");
 
-  // const data: Data = await res.json();
-  return mockData.products.find((value) => value.id === id);
+  const data: Product[] = await res.json();
+  return data.find((value) => value.id === id);
 }

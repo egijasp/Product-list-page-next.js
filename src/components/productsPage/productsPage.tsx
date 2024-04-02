@@ -11,7 +11,7 @@ interface ProductListProps {
 }
 
 const ProductsPage: FC<ProductListProps> = ({ products, currentPage }) => {
-  const productsPerPage = 6;
+  const productsPerPage = 4;
 
   const lastIndex = currentPage * productsPerPage;
   const firstIndex = lastIndex - productsPerPage;
@@ -23,9 +23,13 @@ const ProductsPage: FC<ProductListProps> = ({ products, currentPage }) => {
       {currentProducts.length < 1 ? (
         <div className="text-center py-16 text-3xl">Nothing found</div>
       ) : (
-        <div className="grid content-start sm:grid-cols-2 md:grid-cols-3 gap-6 py-2 min-h-[300px]">
+        <div className="grid content-start sm:grid-cols-2 grid-rows-4 sm:grid-rows-2 gap-6 py-2 min-h-[300px]">
           {currentProducts?.map((product) => (
-            <Link key={product.id} href={`/product/${product.id}`}>
+            <Link
+              data-testid="link"
+              key={product.id}
+              href={`/product/${product.id}`}
+            >
               <div className="border rounded shadow hover:shadow-lg grid px-5 py-3 transition duration-700 ease-in-out hover:scale-105 h-full">
                 <ProductCard product={product} />
               </div>

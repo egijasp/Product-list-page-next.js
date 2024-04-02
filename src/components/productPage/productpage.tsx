@@ -12,12 +12,12 @@ const ProductPage: FC<ProductProps> = ({ product }) => (
   <>
     <div className="grid sm:grid-cols-2 gap-6 border p-4">
       <div className="sm:col-span-2">
-        <Link href="/">
+        <Link data-testid="link" href="/">
           <span className="hover:underline">&lt; to Products</span>
         </Link>
       </div>
       <Image
-        className="justify-self-center w-72 md:w-80"
+        className="justify-self-center w-60 md:w-80"
         src="/placeholder.jpg"
         alt="product"
         width={300}
