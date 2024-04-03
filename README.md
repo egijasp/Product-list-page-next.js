@@ -1,12 +1,20 @@
 # Product list page
 
----
+## <<<<<<< HEAD
+
+## =======
+
+> > > > > > > 5be4d21ae83ac162c12955a8c92dd0d5439e6f75
 
 ### Visit
 
 You can try it out: https://product-list-page-blue.vercel.app/
 
----
+## <<<<<<< HEAD
+
+## =======
+
+> > > > > > > 5be4d21ae83ac162c12955a8c92dd0d5439e6f75
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
