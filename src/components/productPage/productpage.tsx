@@ -10,7 +10,7 @@ interface ProductProps {
 
 const ProductPage: FC<ProductProps> = ({ product }) => (
   <>
-    <div className="grid sm:grid-cols-2 gap-6 border p-4">
+    <div className="grid sm:grid-cols-2 gap-6 border p-4 mb-7">
       <div className="sm:col-span-2">
         <Link data-testid="link" href="/">
           <span className="hover:underline">&lt; to Products</span>
