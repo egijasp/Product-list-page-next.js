@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`container mx-auto px-7 lg:max-w-4xl ${roboto.className} `}
+        className={`container mx-auto px-7 max-w-md sm:max-w-2xl lg:max-w-4xl ${roboto.className} `}
       >
         <Header />
         {children}

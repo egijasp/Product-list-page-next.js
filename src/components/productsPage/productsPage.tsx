@@ -18,7 +18,7 @@ const ProductsPage: FC<ProductListProps> = ({ products, currentPage }) => {
   const currentProducts = products.slice(firstIndex, lastIndex);
 
   return (
-    <div className="py-3">
+    <div className="py-3 grid justify-items-center">
       <Input placeholder="Search products..." />
       {currentProducts.length < 1 ? (
         <div className="text-center py-16 text-3xl">Nothing found</div>
