@@ -6,7 +6,11 @@ const Product = async ({ params }: { params: { productId: string } }) => {
 
   return (
     <>
-      <ProductPage product={product} />
+      {!product ? (
+        <div>Product not found</div>
+      ) : (
+        <ProductPage product={product} />
+      )}
     </>
   );
 };

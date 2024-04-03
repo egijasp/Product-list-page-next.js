@@ -9,6 +9,10 @@ export default async function getProducts(query: string): Promise<Product[]> {
     return data;
   }
 
+  if (!res.ok) {
+    throw new Error("No data found");
+  }
+
   return data.filter((product) =>
     product.title.toLowerCase().includes(query.toLowerCase()),
   );

@@ -1,7 +1,5 @@
 import ProductPage from "@/components/productPage/productpage";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { useRouter } from "next/navigation";
 
 const product = {
   id: 1,

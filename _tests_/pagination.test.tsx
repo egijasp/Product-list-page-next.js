@@ -1,6 +1,5 @@
 import Pagination from "@/components/pagination/pagination";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import Link from "next/link";
+import { render, screen } from "@testing-library/react";
 import { usePathname, useSearchParams } from "next/navigation";
 
 jest.mock("next/navigation", () => ({

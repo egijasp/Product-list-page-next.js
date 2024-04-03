@@ -1,15 +1,10 @@
 import getProducts from "../lib/actions/products";
 import ProductsPage from "@/components/productsPage/productsPage";
 
-interface SearchParams {
-  query: string;
-  page: string;
-}
-
 export default async function Home({
   searchParams,
 }: {
-  searchParams: SearchParams;
+  searchParams: { query: string; page: string };
 }) {
   const query = searchParams?.query || "";
   const currentPage = Number(searchParams?.page) || 1;

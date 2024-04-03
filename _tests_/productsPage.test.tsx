@@ -1,6 +1,6 @@
 import ProductsPage from "@/components/productsPage/productsPage";
+import { mockData } from "@/lib/mockData/mockData";
 import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import { useRouter, useSearchParams } from "next/navigation";
 
 jest.mock("next/navigation", () => ({
@@ -17,34 +17,9 @@ jest.mock("next/navigation", () => ({
   new URLSearchParams("query=apple"),
 );
 
-const mockProducts = [
-  {
-    id: 1,
-    title: "Apple",
-    price: 1.1,
-    category: "Fruits",
-    description: "Fresh and delicious apples from the local orchard.",
-  },
-  {
-    id: 2,
-    title: "Banana",
-    price: 0.65,
-    category: "Fruits",
-    description: "Ripe and sweet bananas, perfect for a healthy snack.",
-  },
-  {
-    id: 3,
-    title: "Chicken Breast",
-    price: 3.25,
-    category: "Meat",
-    description:
-      "Boneless and skinless chicken breasts, great for grilling or baking.",
-  },
-];
-
 describe("ProductsPage", () => {
   it("should render a product page", () => {
-    render(<ProductsPage currentPage={1} products={mockProducts} />);
+    render(<ProductsPage currentPage={1} products={mockData} />);
 
     expect(screen.getByText("Apple")).toBeInTheDocument();
   });
@@ -56,14 +31,14 @@ describe("ProductsPage", () => {
   });
 
   it("should render correct amount of products", () => {
-    render(<ProductsPage currentPage={1} products={mockProducts} />);
+    render(<ProductsPage currentPage={1} products={mockData} />);
 
     const products = screen.getAllByTestId("card");
     expect(products.length).toBe(3);
   });
 
   it("should have correct href", async () => {
-    render(<ProductsPage currentPage={1} products={mockProducts} />);
+    render(<ProductsPage currentPage={1} products={mockData} />);
 
     const links = screen.getAllByTestId("link");
 
